@@ -2,7 +2,7 @@ Package: tteICE
 Type: Package
 Title: Treatment Effect Estimation for Time-to-Event Data with
         Intercurrent Events
-Version: 1.0.1
+Version: 1.1.0
 Author: Yuhao Deng [aut],
   Yi Zhou [cre]
 Maintainer: Yi Zhou <yzhou@pku.edu.cn>
@@ -14,19 +14,18 @@ Authors@R: c(person(given = "Yuhao",
                       family = "Zhou",
                       role = "cre",
                       email = "yzhou@pku.edu.cn"))
-Description: Analyzing treatment effects in clinical trials with time-to-event outcomes is complicated by intercurrent events. This package implements methods for estimating and inferring the cumulative incidence functions for time-to-event (TTE) outcomes with intercurrent events (ICEs) under the five strategies outlined in the ICH E9 (R1) addendum, see Deng (2025)<doi:10.1002/sim.70091>. This package can be used for analyzing data from both randomized controlled trials and observational studies. In general, we have a primary outcome event and possibly an intercurrent event. Two data structures are allowed: competing risks, where only the time to the first event is recorded, and semicompeting risks, where the times to both the primary outcome event and intercurrent event (or censoring) are recorded. For estimation methods, users can choose nonparametric estimation (which does not use covariates) and semiparametrically efficient estimation.
-URL: https://github.com/mephas/tteICE
+Description: Analysis of treatment effects in clinical trials with time-to-event outcomes is complicated by intercurrent events. This package implements methods for estimating and inferring the cumulative incidence functions for time-to-event (TTE) outcomes with intercurrent events (ICE) under the five strategies outlined in the ICH E9 (R1) addendum, see Deng (2025) <doi:10.1002/sim.70091>. This package can be used for analyzing data from both randomized controlled trials and observational studies. In general, the data involve a primary outcome event and, potentially, an intercurrent event. Two data structures are allowed: competing risks, where only the time to the first event is recorded, and semicompeting risks, where the times to both the primary outcome event and intercurrent event (or censoring) are recorded. For estimation methods, users can choose nonparametric estimation (which does not use covariates) and semiparametrically efficient estimation.
+URL: https://github.com/mephas/tteICE, https://mephas.github.io/tteICE/
 BugReports: https://github.com/mephas/tteICE/issues
 License: GPL-3
 Encoding: UTF-8
-Language: en-US
 LazyData: True
 RoxygenNote: 7.3.3
-Imports: cmprsk, MASS, survival, shiny, shinythemes, shinyWidgets, DT,
-        psych
+Imports: cmprsk, MASS, survival (>= 3.8-3), shiny, shinythemes,
+        shinyWidgets, DT, psych, lifecycle
 Depends: R (>= 3.5)
 Suggests: knitr, rmarkdown
 NeedsCompilation: no
-Packaged: 2025-10-15 06:05:06 UTC; zhouy
+Packaged: 2026-02-02 05:44:47 UTC; zhouy
 Repository: CRAN
-Date/Publication: 2025-10-20 19:40:02 UTC
+Date/Publication: 2026-02-02 06:10:02 UTC

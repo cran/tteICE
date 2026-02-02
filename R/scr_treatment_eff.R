@@ -1,4 +1,4 @@
-#' @title Fit the CIF using treatment policy strategy for semicompeting risks data, based on efficient influence functions
+#' @title Fit CIFs using treatment policy strategy for semicompeting risks data, based on efficient influence functions
 #'
 #' @description This function estimates the potential cumulative incidence function based on efficient
 #' influence functions using treatment policy strategy (semicompeting risks data structure). Cox models are
@@ -16,8 +16,6 @@
 #' @param status_int Indicator of the intercurrent event, 1 for event and 0 for censoring.
 #'
 #' @param X Baseline covariates.
-#'
-#' @param subset Subset, either numerical or logical.
 #'
 #'
 #' @return A list including
@@ -63,7 +61,7 @@
 #'
 #' @export
 
-scr.treatment.eff <- function(A,Time,status,Time_int,status_int,X=NULL,subset=NULL){
-  fit = surv.treatment.eff(A,Time,status,X,subset)
+scr.treatment.eff <- function(A,Time,status,Time_int,status_int,X=NULL){
+  fit = surv.treatment.eff(A,Time,status,X)
   return(fit)
 }

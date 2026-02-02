@@ -1,12 +1,14 @@
-#' @title Calculate the standard error for the estimated CIF and treatment effect
+#' @title Calculate standard errors for estimated CIFs and treatment effects
 #'
 #' @description This function calculates the standard error for the estimated potential cumulative incidence function
 #' and treatment effect. Two methods to calculate the standard error are considered: the asymptotic standard error
 #' based on the explicit formula and bootstrapping.
 #'
-#' @param fit A fitted object from \code{surv.tteICE}.
+#' @param fit 
+#' A fitted object returned by the function \code{tteICE}, \code{surv.tteICE}, or \code{scr.tteICE}.
 #'
-#' @param nboot Number of resamplings in the boostrapping method. If \code{nboot} is 0 or 1, then
+#' @param nboot 
+#' Number of resamplings in the boostrapping method. If \code{nboot} is 0 or 1, then
 #' asymptotic standard error based on the explicit form is calculated instead of bootstrapping.
 #'
 #' @param seed Seed for bootstrapping.
@@ -26,12 +28,13 @@
 #' }
 #'
 #'
-#' @seealso \code{\link[tteICE]{surv.tteICE}}, \code{\link[tteICE]{scr.tteICE}}
-#'
+#' @seealso 
+#' \code{\link[tteICE]{surv.tteICE}}, \code{\link[tteICE]{scr.tteICE}}, 
+#' \code{\link[tteICE]{tteICE}}
 #'
 #' @export
 
-surv.boot <- function(fit,nboot=0,seed=0){
+surv.boot <- function(fit,nboot=0,seed=NULL){
   N = length(fit$A)
   time1 = fit$time1
   time0 = fit$time0
@@ -45,17 +48,19 @@ surv.boot <- function(fit,nboot=0,seed=0){
   se0 = .matchy(fit$se0,fit$time0,tt)
   ate = cif1-cif0
   se = .matchy(fit$se,fit$time,tt)
+  p.val = fit$p.val
   if (nboot>1){
     cif1l = cif0l = te = NULL
+    if (is.null(seed)) seed = 0
     set.seed(seed)
     for(b in 1:nboot){
       subset = sample(1:N,replace=TRUE)
       if (fit$dtype=='cmprsk'){
       fitb = surv.tteICE(fit$A,fit$Time,fit$cstatus,fit$strategy,fit$cov1,fit$method,
-                      fit$weights,subset)
+                      fit$weights,na.rm=FALSE,nboot=-1)
       } else {
       fitb = scr.tteICE(fit$A,fit$Time,fit$status,fit$Time_int,fit$status_int,fit$strategy,fit$cov1,fit$method,
-                        fit$weights,subset)
+                        fit$weights,na.rm=FALSE,nboot=-1)
       }
       cifb1 = .matchy(fitb$cif1,fitb$time1,tt)
       cifb0 = .matchy(fitb$cif0,fitb$time0,tt)
@@ -67,6 +72,6 @@ surv.boot <- function(fit,nboot=0,seed=0){
     se0 = apply(cif0l,2,sd,na.rm=TRUE)
     se = apply(te,2,sd)
   }
-  return(list(time=tt,cif1=cif1,cif0=cif0,ate=ate,se1=se1,se0=se0,se=se,
+  return(list(time=tt,cif1=cif1,cif0=cif0,ate=ate,se1=se1,se0=se0,se=se,p.val=p.val,
               strategy=fit$strategy,method=fit$method,dtype=fit$dtype))
 }

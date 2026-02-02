@@ -1,4 +1,4 @@
-#' @title Fit the CIF using hypothetical strategy (II) for semicompeting risks data
+#' @title Fit CIFs using hypothetical strategy (II) for semicompeting risks data
 #'
 #' @description This function nonparametrically estimates the potential cumulative incidence function
 #' using hypothetical strategy (semicompeting risks data structure). The intercurrent event is assumed to
@@ -15,8 +15,6 @@
 #' @param status_int Indicator of the intercurrent event, 1 for event and 0 for censoring.
 #'
 #' @param weights Weight for each subject.
-#'
-#' @param subset Subset, either numerical or logical.
 #'
 #'
 #' @return A list including
@@ -57,10 +55,10 @@
 #'
 #' @export
 
-scr.removed <- function(A,Time,status,Time_int,status_int,weights=rep(1,length(A)),subset=NULL){
+scr.removed <- function(A,Time,status,Time_int,status_int,weights=rep(1,length(A))){
   Time = (Time + Time_int - abs(Time-Time_int))/2
   cstatus = status + 2*status_int
   cstatus[cstatus>2] = 2
-  fit = surv.removed(A,Time,cstatus,weights,subset)
+  fit = surv.removed(A,Time,cstatus,weights)
   return(fit)
 }

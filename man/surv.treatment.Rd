@@ -2,9 +2,9 @@
 % Please edit documentation in R/surv_treatment.R
 \name{surv.treatment}
 \alias{surv.treatment}
-\title{Fit the CIF using treatment policy strategy for competing risks data}
+\title{Fit CIFs using treatment policy strategy for competing risks data}
 \usage{
-surv.treatment(A, Time, cstatus, weights = rep(1, length(A)), subset = NULL)
+surv.treatment(A, Time, cstatus, weights = rep(1, length(A)))
 }
 \arguments{
 \item{A}{Treatment indicator, 1 for treatment and 0 for control.}
@@ -14,8 +14,6 @@ surv.treatment(A, Time, cstatus, weights = rep(1, length(A)), subset = NULL)
 \item{cstatus}{Indicator of event, 1 for the primary event, 2 for the intercurrent event, 0 for censoring.}
 
 \item{weights}{Weight for each subject.}
-
-\item{subset}{Subset, either numerical or logical.}
 }
 \value{
 A list including

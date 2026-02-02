@@ -2,7 +2,7 @@
 % Please edit documentation in R/scr_composite.R
 \name{scr.composite}
 \alias{scr.composite}
-\title{Fit the CIF using composite variable strategy for semicompeting risks data}
+\title{Fit CIFs using composite variable strategy for semicompeting risks data}
 \usage{
 scr.composite(
   A,
@@ -10,8 +10,7 @@ scr.composite(
   status,
   Time_int,
   status_int,
-  weights = rep(1, length(A)),
-  subset = NULL
+  weights = rep(1, length(A))
 )
 }
 \arguments{
@@ -26,8 +25,6 @@ scr.composite(
 \item{status_int}{Indicator of the intercurrent event, 1 for event and 0 for censoring.}
 
 \item{weights}{Weight for each subject.}
-
-\item{subset}{Subset, either numerical or logical.}
 }
 \value{
 A list including

@@ -2,9 +2,9 @@
 % Please edit documentation in R/surv_composite_eff.R
 \name{surv.composite.eff}
 \alias{surv.composite.eff}
-\title{Fit the CIF using composite variable strategy for competing risks data, based on efficient influence functions}
+\title{Fit CIFs using composite variable strategy for competing risks data, based on efficient influence functions}
 \usage{
-surv.composite.eff(A, Time, cstatus, X = NULL, subset = NULL)
+surv.composite.eff(A, Time, cstatus, X = NULL)
 }
 \arguments{
 \item{A}{Treatment indicator, 1 for treatment and 0 for control.}
@@ -14,8 +14,6 @@ surv.composite.eff(A, Time, cstatus, X = NULL, subset = NULL)
 \item{cstatus}{Indicator of event, 1 for the primary event, 2 for the intercurrent event, 0 for censoring.}
 
 \item{X}{Baseline covariates.}
-
-\item{subset}{Subset, either numerical or logical.}
 }
 \value{
 A list including

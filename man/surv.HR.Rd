@@ -2,7 +2,7 @@
 % Please edit documentation in R/surv_HR.R
 \name{surv.HR}
 \alias{surv.HR}
-\title{Estimate the hazard ratio with intercurrent events}
+\title{Estimate hazard ratios}
 \usage{
 surv.HR(
   A,
@@ -66,8 +66,10 @@ ratio should only be treated as a descriptive or exploratory measure of the trea
 data(bmt)
 bmt = transform(bmt, d4=d2+d3)
 A = as.numeric(bmt$group>1)
+
 ## composite variable strategy
 fit = surv.HR(A, bmt$t2, bmt$d4, "composite")
+
 ## while on treatment strategy
 X = bmt[,c('z1','z3','z5')]
 fit = surv.HR(A, bmt$t2, bmt$d4, "whileon", cov1=X)

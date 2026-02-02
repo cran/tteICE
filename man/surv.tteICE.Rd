@@ -2,7 +2,7 @@
 % Please edit documentation in R/surv_tteICE.R
 \name{surv.tteICE}
 \alias{surv.tteICE}
-\title{Fit the CIF for time-to-event with intercurrent events for competing risks data}
+\title{Fit CIFs for competing risks time-to-event data with intercurrent events.}
 \usage{
 surv.tteICE(
   A,
@@ -13,7 +13,9 @@ surv.tteICE(
   method = "np",
   weights = NULL,
   subset = NULL,
-  na.rm = FALSE
+  na.rm = FALSE,
+  nboot = 0,
+  seed = 0
 )
 }
 \arguments{
@@ -31,8 +33,8 @@ surv.tteICE(
 
 \item{cov1}{Baseline covariates.}
 
-\item{method}{Estimation method, \code{"np"} indicating nonparametric estimation, \code{"np"} indicating inverse 
-treatment probability weighting, \code{"eff"} indicating semiparametrically efficient estimation based on efficient 
+\item{method}{Estimation method, \code{"np"} indicating nonparametric estimation, \code{"np"} indicating inverse
+treatment probability weighting, \code{"eff"} indicating semiparametrically efficient estimation based on efficient
 influence functions.}
 
 \item{weights}{Weight for each subject.}
@@ -40,13 +42,18 @@ influence functions.}
 \item{subset}{Subset, either numerical or logical.}
 
 \item{na.rm}{Whether to remove missing values.}
+
+\item{nboot}{Number of resamplings in the boostrapping method. If \code{nboot} is 0 or 1, then
+asymptotic standard error based on the explicit form is calculated instead of bootstrapping.}
+
+\item{seed}{Seed for bootstrapping.}
 }
 \value{
 A list including the fitted object and input variables.
 }
 \description{
 This function estimates the potential cumulative incidence function
-for time-to event data under ICH E9 (R1) to address intercurrent events. The input data 
+for time-to event data under ICH E9 (R1) to address intercurrent events. The input data
 should be of a competing risks structure.
 }
 \details{
@@ -80,16 +87,20 @@ data(bmt)
 bmt = transform(bmt, d4=d2+d3)
 A = as.numeric(bmt$group>1)
 X = as.matrix(bmt[,c('z1','z3','z5')])
+
 ## Composite variable strategy, 
 ## nonparametric estimation without covariates
 fit1 = surv.tteICE(A, bmt$t2, bmt$d4, "composite")
+
 ## Hypothetical strategy (natural effects), 
 ## nonparametric estimation with inverse probability weighting
 fit2 = surv.tteICE(A, bmt$t2, bmt$d4, "natural", X, method='ipw')
+
 ## nonparametric estimation with weights as inverse propensity score
 ps = predict(glm(A ~ X, family='binomial'), type='response')
 w = A/ps + (1-A)/(1-ps)
 fit2 = surv.tteICE(A, bmt$t2, bmt$d4, "natural", weights=w)
+
 ## Hypothetical strategy (removing intercurrent events),
 ## semiparametrically efficient estimation with covariates
 fit3 = surv.tteICE(A, bmt$t2, bmt$d4, "removed", X, method='eff')

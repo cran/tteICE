@@ -1,4 +1,4 @@
-#' @title Fit the CIF using principal stratum strategy for competing risks data
+#' @title Fit CIFs using principal stratum strategy for competing risks data
 #'
 #' @description This function nonparametrically estimates the potential cumulative incidence function
 #' using principal stratum strategy (competing risks data structure). The estimand is defined in a
@@ -11,8 +11,6 @@
 #' @param cstatus Indicator of event, 1 for the primary event, 2 for the intercurrent event, 0 for censoring.
 #'
 #' @param weights Weight for each subject.
-#'
-#' @param subset Subset, either numerical or logical.
 #'
 #'
 #' @return A list including
@@ -48,14 +46,14 @@
 #'
 #' @export
 
-surv.principal <- function(A,Time,cstatus,weights=rep(1,length(A)),subset=NULL){
-  N = length(A)
-  if (is.null(subset)) subset = 1:N
-  if (is.logical(subset)) subset = (1:N)[subset]
-  fit11 = survfit(Surv(Time,cstatus==1)~1, weights=weights, subset=subset[A[subset]==1])
-  fit10 = survfit(Surv(Time,cstatus==1)~1, weights=weights, subset=subset[A[subset]==0])
-  fit21 = survfit(Surv(Time,cstatus>1)~1, weights=weights, subset=subset[A[subset]==1])
-  fit20 = survfit(Surv(Time,cstatus>1)~1, weights=weights, subset=subset[A[subset]==0])
+surv.principal <- function(A,Time,cstatus,weights=rep(1,length(A))){
+  n = length(A)
+  s1 = (A==1); n1 = sum(s1)
+  s0 = (A==0); n0 = sum(s0)
+  fit11 = survfitKM(factor(rep(1,n1)), Surv(Time,cstatus==1)[s1], weights=weights[s1])
+  fit10 = survfitKM(factor(rep(0,n0)), Surv(Time,cstatus==1)[s0], weights=weights[s0])
+  fit21 = survfitKM(factor(rep(1,n1)), Surv(Time,cstatus>1)[s1], weights=weights[s1])
+  fit20 = survfitKM(factor(rep(0,n0)), Surv(Time,cstatus>1)[s0], weights=weights[s0])
   time1 = c(0, fit11$time)
   time0 = c(0, fit10$time)
   fit11 = rbind(0,cbind(fit11$cumhaz,fit11$std.err))

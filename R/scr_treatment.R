@@ -1,4 +1,4 @@
-#' @title Fit the CIF using treatment policy strategy for semicompeting risks data
+#' @title Fit CIFs using treatment policy strategy for semicompeting risks data
 #'
 #' @description This function nonparametrically estimates the potential cumulative incidence function
 #' using treatment policy strategy (semicompeting risks data structure). This strategy ignores the intercurrent
@@ -15,8 +15,6 @@
 #' @param status_int Indicator of the intercurrent event, 1 for event and 0 for censoring.
 #'
 #' @param weights Weight for each subject.
-#'
-#' @param subset Subset, either numerical or logical.
 #'
 #'
 #' @return A list including
@@ -61,7 +59,7 @@
 #'
 #' @export
 
-scr.treatment <- function(A,Time,status,Time_int,status_int,weights=rep(1,length(A)),subset=NULL){
-  fit = surv.treatment(A,Time,status,weights,subset)
+scr.treatment <- function(A,Time,status,Time_int,status_int,weights=rep(1,length(A))){
+  fit = surv.treatment(A,Time,status,weights)
   return(fit)
 }

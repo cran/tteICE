@@ -2,17 +2,9 @@
 % Please edit documentation in R/scr_removed.R
 \name{scr.removed}
 \alias{scr.removed}
-\title{Fit the CIF using hypothetical strategy (II) for semicompeting risks data}
+\title{Fit CIFs using hypothetical strategy (II) for semicompeting risks data}
 \usage{
-scr.removed(
-  A,
-  Time,
-  status,
-  Time_int,
-  status_int,
-  weights = rep(1, length(A)),
-  subset = NULL
-)
+scr.removed(A, Time, status, Time_int, status_int, weights = rep(1, length(A)))
 }
 \arguments{
 \item{A}{Treatment indicator, 1 for treatment and 0 for control.}
@@ -26,8 +18,6 @@ scr.removed(
 \item{status_int}{Indicator of the intercurrent event, 1 for event and 0 for censoring.}
 
 \item{weights}{Weight for each subject.}
-
-\item{subset}{Subset, either numerical or logical.}
 }
 \value{
 A list including

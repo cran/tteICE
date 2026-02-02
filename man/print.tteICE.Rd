@@ -2,40 +2,45 @@
 % Please edit documentation in R/print_tteICE.R
 \name{print.tteICE}
 \alias{print.tteICE}
-\title{Print a short summary of the estimated treatment effect}
+\title{Print method for 'tteICE' objects}
 \usage{
-\method{print}{tteICE}(x, digits = 3, ...)
+\method{print}{tteICE}(x, digits = 4, ...)
 }
 \arguments{
-\item{x}{A fitted object returned by the function \code{surv.tteICE} or \code{scr.tteICE}.}
+\item{x}{A fitted object returned by the function \code{tteICE}, \code{surv.tteICE}, or \code{scr.tteICE}.}
 
 \item{digits}{The digits of the results}
 
-\item{...}{Other augments in function \code{\link{print.default}}}
+\item{...}{Other arguments in function \code{\link{print.default}}}
 }
 \value{
 Print the summary of a tteICE object
 }
 \description{
-This function summarize the results
+This function summarizes the results
 }
 \examples{
 ## load data
 data(bmt)
 bmt = transform(bmt, d4=d2+d3)
 A = as.numeric(bmt$group>1)
+bmt$A = A
+
 ## print the results
-for (st in c('composite','natural','removed','whileon','principal')){
- fit = surv.tteICE(A, bmt$t2, bmt$d4, st)
- print(fit)
-}
-for (st in c('composite','natural','removed','whileon','principal')){
- fit = scr.tteICE(A, bmt$t1, bmt$d1, bmt$t2, bmt$d2, st)
- print(fit, digits=2)
-}
+fit1 = surv.tteICE(A, bmt$t2, bmt$d4, "composite")
+print(fit1)
+
+fit2 = scr.tteICE(A, bmt$t1, bmt$d1, bmt$t2, bmt$d2, "composite")
+print(fit2, digits=2)
+
+library(survival)
+fit3 = tteICE(Surv(t2, d4, type = "mstate")~A,
+              data=bmt, strategy="composite", method='eff')
+print(fit3, digits=3)
 
 }
 \seealso{
 \code{\link[tteICE]{surv.tteICE}},
-\code{\link[tteICE]{scr.tteICE}}
+\code{\link[tteICE]{scr.tteICE}},
+\code{\link[tteICE]{tteICE}}
 }

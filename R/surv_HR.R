@@ -1,4 +1,4 @@
-#' @title Estimate the hazard ratio with intercurrent events
+#' @title Estimate hazard ratios
 #'
 #' @description This function estimates the hazard ratio
 #' for time-to event data under ICH E9 (R1) to address intercurrent events. Multiple
@@ -36,8 +36,10 @@
 #' data(bmt)
 #' bmt = transform(bmt, d4=d2+d3)
 #' A = as.numeric(bmt$group>1)
+#' 
 #' ## composite variable strategy
 #' fit = surv.HR(A, bmt$t2, bmt$d4, "composite")
+#' 
 #' ## while on treatment strategy
 #' X = bmt[,c('z1','z3','z5')]
 #' fit = surv.HR(A, bmt$t2, bmt$d4, "whileon", cov1=X)

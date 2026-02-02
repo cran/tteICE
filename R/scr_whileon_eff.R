@@ -1,4 +1,4 @@
-#' @title Fit the CIF using while on treatment strategy for semicompeting risks data, based on efficient influence functions
+#' @title Fit CIFs using while on treatment strategy for semicompeting risks data, based on efficient influence functions
 #'
 #' @description This function estimates the potential cumulative incidence function
 #' based on efficient influence functions using while on treatment strategy (semicompeting
@@ -17,8 +17,6 @@
 #' @param status_int Indicator of the intercurrent event, 1 for event and 0 for censoring.
 #'
 #' @param X Baseline covariates.
-#'
-#' @param subset Subset, either numerical or logical.
 #'
 #'
 #' @return A list including
@@ -62,10 +60,10 @@
 #'
 #' @export
 
-scr.whileon.eff <- function(A,Time,status,Time_int,status_int,X=NULL,subset=NULL){
+scr.whileon.eff <- function(A,Time,status,Time_int,status_int,X=NULL){
   Time = (Time + Time_int - abs(Time-Time_int))/2
   cstatus = status + 2*status_int
   cstatus[cstatus>2] = 2
-  fit = surv.whileon.eff(A,Time,cstatus,X,subset)
+  fit = surv.whileon.eff(A,Time,cstatus,X)
   return(fit)
 }

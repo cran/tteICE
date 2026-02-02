@@ -3,16 +3,15 @@
 ##
 
 # if (!requireNamespace("shiny", quietly = TRUE)) install.packages("shiny")
-# requireNamespace("shiny")
-require("shiny")
+library("shiny", quietly = TRUE)
 # if (!requireNamespace("shinythemes", quietly = TRUE)) install.packages("shinythemes")
-require("shinythemes")
+library("shinythemes", quietly = TRUE)
 # if (!requireNamespace("psych")) install.packages("psych")
-require("psych")
+library("psych")
 # if (!requireNamespace("shinyWidgets")) install.packages("shinyWidgets")
-require("shinyWidgets")
+library("shinyWidgets")
 # if (!requireNamespace("DT", quietly = TRUE)) install.packages("DT")
-require("DT")
+library("DT", quietly = TRUE)
 source("tab/func2_causal.R", encoding = "utf-8")
 
 
@@ -33,7 +32,7 @@ footer=NULL,
 
 tabPanel(
   "tteICE",
-  headerPanel("tteICE: Treatment effect estimation for time-to-event outcomes with intercurrent events (ICEs)"),
+  headerPanel("tteICE: Treatment Effect Estimation for Time-to-Event Data with Intercurrent Events"),
   source("ui_data.R", local = TRUE, encoding = "UTF-8")$value,
   hr()
   )

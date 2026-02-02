@@ -2,9 +2,9 @@
 % Please edit documentation in R/surv_principal.R
 \name{surv.principal}
 \alias{surv.principal}
-\title{Fit the CIF using principal stratum strategy for competing risks data}
+\title{Fit CIFs using principal stratum strategy for competing risks data}
 \usage{
-surv.principal(A, Time, cstatus, weights = rep(1, length(A)), subset = NULL)
+surv.principal(A, Time, cstatus, weights = rep(1, length(A)))
 }
 \arguments{
 \item{A}{Treatment indicator, 1 for treatment and 0 for control.}
@@ -14,8 +14,6 @@ surv.principal(A, Time, cstatus, weights = rep(1, length(A)), subset = NULL)
 \item{cstatus}{Indicator of event, 1 for the primary event, 2 for the intercurrent event, 0 for censoring.}
 
 \item{weights}{Weight for each subject.}
-
-\item{subset}{Subset, either numerical or logical.}
 }
 \value{
 A list including
