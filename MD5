@@ -1,4 +1,4 @@
-df0662c62bdf23fa287fe26b8de13dad *DESCRIPTION
+44d9dc96760ab6b226d4c37e19bb8481 *DESCRIPTION
 c80dc4f0abf999a48e0d09b17c5751fc *NAMESPACE
 71f67f9f1a97436d29197ee6bb5c5be9 *R/basic.R
 29af7fab34937c224cf09baf589b0109 *R/bmt.R
@@ -17,12 +17,12 @@ d00b553e32f2cb8f2f617339b893a7b2 *R/scr_removed.R
 4eb89156bdb6491fb0aa343f2b36a324 *R/scr_removed_eff.R
 6edfa427ead5f41edc2375d7c2aac32f *R/scr_treatment.R
 1dc6b9e025da1ed9c054587d7bd2e60d *R/scr_treatment_eff.R
-e00d294cf0fdcdf3c7d847daa4f2e43e *R/scr_tteICE.R
+3cae745b563d29ab8df8c1acd65f5b16 *R/scr_tteICE.R
 9c8a270baec45ecfc31e4664b1925e90 *R/scr_whileon.R
 7bff6930cbec8588fae114b407c53189 *R/scr_whileon_eff.R
 7dddc7ef51d32d56c1a740520c7ae7c9 *R/summary_tteICE.R
 e5df3a3cbe5431027113e0994a48d754 *R/surv_HR.R
-d4a43e8def4d703e2f9fc7e04501ee81 *R/surv_boot.R
+c38bc2d6faaf3f087ffada5f9fe01bf8 *R/surv_boot.R
 0efcee744e4217730a41481046e0d125 *R/surv_composite.R
 49dae8e8511957ff2df0669dccdc4c63 *R/surv_composite_eff.R
 bcfebb69fb7d6f15ce1901d2dd095ef5 *R/surv_natural.R
@@ -33,7 +33,7 @@ e6e75348ab79965f8437056118292eb9 *R/surv_removed.R
 83a8a14b9aab159d808b0c1555b6eb35 *R/surv_removed_eff.R
 377a6f01263269ef9b5789e5aa4e6120 *R/surv_treatment.R
 5c93adab9e92e1082e52c202eea717e0 *R/surv_treatment_eff.R
-8f24fa21bad0a55427ca1912ac422785 *R/surv_tteICE.R
+ee16380a954f1c04e9c7868b985e277b *R/surv_tteICE.R
 817c6bb22f9f48971d1e6e83b0520cbf *R/surv_whileon.R
 8b43fcfd3aaec9bfccf68cde42cb3448 *R/surv_whileon_eff.R
 6274ab3ef07e80fd7195ed483389bb18 *R/tteICE-package.R
@@ -41,7 +41,7 @@ e6e75348ab79965f8437056118292eb9 *R/surv_removed.R
 5065903225b35c0f0fe227c653902b9a *R/tteICEShiny.R
 9d40159f50a5fc9949cbfe95a2884126 *build/partial.rdb
 52ece57b04def834e9472f9bdb2d9ca3 *data/bmt.rda
-943a0d7e9d5d3599c46a3b4fc6d7ddc0 *inst/WORDLIST
+67b1a7b59bc98ec43cf23a81f9b3e281 *inst/WORDLIST
 2139ca9a326f02ca28b8726f603c4856 *inst/shiny/bmt-shiny.RData
 5a03bda9fa43bd48203acabd751c2b79 *inst/shiny/server.R
 0aef2a4e4331a9778406be925a7f551b *inst/shiny/server_ana.R
@@ -56,8 +56,7 @@ a7315e417df0abfb17414a5905ab48ab *inst/shiny/server_data.R
 29272d592cf1cb70be2316fad4ca258f *inst/shiny/ui.R
 510359c3c5332d84ad7a074c8a029e52 *inst/shiny/ui_data.R
 0755e5ec71b5b9e314b59f4584ef56ac *inst/shiny/www/style_cn_causal.css
-c338b7620edaecd375965469c65b1921 *inst/tteICE.pdf
-8736f71f7e9934ddd4d919008e5c7492 *inst/tteICS.pdf
+4bef318a336a7ea7e3f7308f6e98a129 *inst/tteICE.pdf
 17a2e1ee536df82c3f55b139e15977f2 *man/bmt.Rd
 7cdf118bc94d3493a07106a4cd9d652c *man/figures/README-example_1-1.png
 3365bb030592bb6df64bfe2f614034b3 *man/figures/README-example_1-2.png

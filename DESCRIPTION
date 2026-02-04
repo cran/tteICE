@@ -2,7 +2,7 @@ Package: tteICE
 Type: Package
 Title: Treatment Effect Estimation for Time-to-Event Data with
         Intercurrent Events
-Version: 1.1.0
+Version: 1.1.1
 Author: Yuhao Deng [aut],
   Yi Zhou [cre]
 Maintainer: Yi Zhou <yzhou@pku.edu.cn>
@@ -26,6 +26,6 @@ Imports: cmprsk, MASS, survival (>= 3.8-3), shiny, shinythemes,
 Depends: R (>= 3.5)
 Suggests: knitr, rmarkdown
 NeedsCompilation: no
-Packaged: 2026-02-02 05:44:47 UTC; zhouy
+Packaged: 2026-02-04 05:05:17 UTC; zhouy
 Repository: CRAN
-Date/Publication: 2026-02-02 06:10:02 UTC
+Date/Publication: 2026-02-04 08:20:02 UTC
