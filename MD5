@@ -1,6 +1,5 @@
-d2a0a52366b71594ddd01315224f82f0 *DESCRIPTION
+f22451fa5f908993ef23914e948db28b *DESCRIPTION
 060269846228b26d9d2da0141430c6a6 *NAMESPACE
-eac4f0a0171026578e7a03f865073f10 *R/basehaz_tteICE.R
 d28550464dcf4604bfbce4bd8a0f262c *R/basic.R
 8c98371f7d46001835ebd7ef6d4fac4c *R/bmt.R
 dc1c957a5543ee216426bc183f3921fc *R/bshaz.R
@@ -63,8 +62,7 @@ a7315e417df0abfb17414a5905ab48ab *inst/shiny/server_data.R
 29272d592cf1cb70be2316fad4ca258f *inst/shiny/ui.R
 510359c3c5332d84ad7a074c8a029e52 *inst/shiny/ui_data.R
 0755e5ec71b5b9e314b59f4584ef56ac *inst/shiny/www/style_cn_causal.css
-13826a40acae706153ac14574bcb5738 *inst/tteICE.pdf
-a3b53dd4b53a78d255951ec765018453 *man/basehaz.tteICE.Rd
+e0d19c47702d2a3872cef2f337321ef3 *inst/tteICE.pdf
 904eb9379e56b0af453a84beb1fccb03 *man/bmt.Rd
 a32b89630dea2f875b23fefc771b41bf *man/bshaz.Rd
 27eaa3caf2d2bf5b0243501d74ddba54 *man/bshaz.tteICE.Rd
