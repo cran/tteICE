@@ -5,6 +5,9 @@
 #' @param object 
 #' A fitted object returned by the function \code{tteICE}, \code{surv.tteICE}, or \code{scr.tteICE}.
 #'
+#' @param digits
+#' The digits of the results
+#' 
 #' @param ... Other arguments in function \code{\link{summary}}
 #'
 #' @importFrom stats quantile
@@ -26,7 +29,7 @@
 #' predict(fit2)
 #' 
 #' library(survival)
-#' fit3 = tteICE(Surv(t2, d4, type = "mstate")~A|z1+z3+z5, 
+#' fit3 = tteICE(Surv(t2, factor(d4))~A|z1+z3+z5, 
 #'               data=bmt, strategy="composite", method='eff')
 #' summary(fit3)
 #'
@@ -41,10 +44,35 @@
 #' sample size, treated sample size, controlled sample size, p-value, and predicted risks at quartiles
 #' @export
 
-summary.tteICE <- function(object, ...) {
-
+summary.tteICE <- function(object, digits=3, ...) {
   res = list(call=object$call,dtype=object$dtype, strategy=object$strategy, method=object$method, maxt=max(object$time),
-             n=object$n, n1=object$n1, n0=object$n0, p.val=object$p.val, est=predict(object))
+             n=object$n, n1=object$n1, n0=object$n0, p.val=object$p.val, coef=coef(object), est=predict(object))
   class(res) <- "summary.tteICE"
-  res
+  print(object)
+  if (!is.null(object$coef)) {
+    cat("-----------------------------------------------------------------------\n")
+    coef1 = rbind(object$coef$coef11, object$coef$coef10)
+    if (!is.null(coef1)){
+      rownames(coef1) = c("A=1", "A=0")
+      cat("Coefficients of covariates in the Cox model for event 1\n")
+      print(coef1)
+    }
+    coef2 = rbind(object$coef$coef21, object$coef$coef20)
+    if (!is.null(coef2)){
+      rownames(coef2) = c("A=1", "A=0")
+      cat("Coefficients of covariates in the Cox model for event 2\n")
+      print(coef2)
+    }
+    coef = rbind(object$coef$coef1, object$coef$coef0)
+    if (!is.null(coef)){
+      rownames(coef) = c("A=1", "A=0")
+      cat("Coefficients of covariates in the Cox model\n")
+      print(coef)
+    }
+  }
+  cat("-----------------------------------------------------------------------\n")
+  cat("The estimated cumulative incidences and treatment effects at quartiles:\n")
+  print(round(res$est, digits))
+  cat("\n")
+  invisible(res)
 }

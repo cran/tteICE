@@ -21,8 +21,29 @@ print.summary.tteICE <- function(x, digits=3, ...) {
   cat("Strategy:", x$strategy, "\n")
   cat("Estimation method:", x$method, "\n")
   cat("Observations:", x$n, '(including', x$n1, 'treated and', x$n0, 'control)\n')
-  cat("Maximum follow-up time:", x$maxt, '\n')
+  cat("Maximum follow-up time:", round(x$maxt, digits), '\n')
   cat("P-value of the average treatment effect:", round(p, digits), "\n")
+  if (!is.null(x$coef)) {
+    cat("-----------------------------------------------------------------------\n")
+    coef1 = rbind(x$coef$coef11, x$coef$coef10)
+    if (!is.null(coef1)){
+      rownames(coef1) = c("A=1", "A=0")
+      cat("Coefficients of covariates in the Cox model for event 1\n")
+      print(coef1)
+    }
+    coef2 = rbind(x$coef$coef21, x$coef$coef20)
+    if (!is.null(coef2)){
+      rownames(coef2) = c("A=1", "A=0")
+      cat("Coefficients of covariates in the Cox model for event 2\n")
+      print(coef2)
+    }
+    coef = rbind(x$coef$coef1, x$coef$coef0)
+    if (!is.null(coef)){
+      rownames(coef) = c("A=1", "A=0")
+      cat("Coefficients of covariates in the Cox model\n")
+      print(coef)
+    }
+  }
   cat("-----------------------------------------------------------------------\n")
   cat("The estimated cumulative incidences and treatment effects at quartiles:\n")
   print(round(x$est, digits))
